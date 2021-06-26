@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AuthUserService } from "../service/AuthUserService";
+import { AuthUserService } from "../../service/middlewares/AuthUserService";
 
 
 

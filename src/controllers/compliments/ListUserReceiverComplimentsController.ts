@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListUserReceiveComplimentsService } from "../service/ListUserReceiveComplimentsService";
+import { ListUserReceiveComplimentsService } from "../../service/compliments/ListUserReceiveComplimentsService";
 
 
 class ListUserReceiverComplimentsController{

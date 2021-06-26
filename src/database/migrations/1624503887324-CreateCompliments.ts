@@ -40,7 +40,7 @@ export class CreateCompliments1624503887324 implements MigrationInterface {
                         referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_sender"],
-                        onDelete: "SET NULL",
+                        onDelete: "CASCADE",
                         onUpdate: "SET NULL"
                     },
                     {
@@ -48,7 +48,7 @@ export class CreateCompliments1624503887324 implements MigrationInterface {
                         referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_receiver"],
-                        onDelete: "SET NULL",
+                        onDelete: "CASCADE",
                         onUpdate: "SET NULL"
                     },
                     {
@@ -56,7 +56,7 @@ export class CreateCompliments1624503887324 implements MigrationInterface {
                         referencedTableName: "tags",
                         referencedColumnNames: ["id"],
                         columnNames: ["tag_id"],
-                        onDelete: "SET NULL",
+                        onDelete: "CASCADE",
                         onUpdate: "SET NULL"
                     }
                 ]

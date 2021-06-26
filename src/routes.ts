@@ -1,16 +1,18 @@
 import { Router } from "express";
-import { CreateUserController } from "./controllers/CreateUserController";
-import { CreateTagController } from "./controllers/CreateTagController";
+import { CreateUserController } from "./controllers/users/CreateUserController";
+import { CreateTagController } from "./controllers/tags/CreateTagController";
 import { ensureAdmin } from "./middlewares/ensureAdmin";
-import { AuthUserController } from "./controllers/AuthUserController";
-import { CreateComplimentController } from "./controllers/CreateComplimentController";
+import { AuthUserController } from "./controllers/middlewares/AuthUserController";
+import { CreateComplimentController } from "./controllers/compliments/CreateComplimentController";
 import { ensureAuth } from "./middlewares/ensureAuth";
-import { ListUserSenderComplimentsController } from "./controllers/ListUserSenderComplimentsController";
-import { ListUserReceiverComplimentsController } from "./controllers/ListUserReceiverComplimentsController";
-import { ListTagsController } from "./controllers/ListTagController";
-import { ListUsersController } from "./controllers/ListUsersController";
-import { ChangeUserPasswordController } from "./controllers/ChangeUserPasswordController";
-import { ChangeUserProfileController } from "./controllers/ChangeUserProfileController";
+import { ListUserSenderComplimentsController } from "./controllers/compliments/ListUserSenderComplimentsController";
+import { ListUserReceiverComplimentsController } from "./controllers/compliments/ListUserReceiverComplimentsController";
+import { ListTagsController } from "./controllers/tags/ListTagController";
+import { ListUsersController } from "./controllers/users/ListUsersController";
+import { ChangeUserPasswordController } from "./controllers/users/ChangeUserPasswordController";
+import { ChangeUserProfileController } from "./controllers/users/ChangeUserProfileController";
+import { DeleteUserController } from "./controllers/users/DeleteUserController";
+import { ListUsersByIdController } from "./controllers/users/ListUserByIdController";
 
 
 const router = Router();
@@ -26,6 +28,8 @@ const listTagController = new ListTagsController();
 const listUserController = new ListUsersController();
 const changepassword = new ChangeUserPasswordController();
 const changeProfile = new ChangeUserProfileController();
+const deleteUserController = new DeleteUserController();
+const listUserByIdController = new ListUsersByIdController();
 
 /*
  *  Rotas de Usuário 
@@ -34,13 +38,19 @@ router.post("/users", createUserController.handle);
 router.put("/users/update/password", ensureAuth, changepassword.handle);
 router.patch("/user/update/profile", ensureAuth, changeProfile.handle);
 router.get("/users/list", ensureAuth, listUserController.handle);
+router.delete("/users/delete", ensureAuth, deleteUserController.handle);
+router.get("/users/list/:id", ensureAuth, listUserByIdController.handle);
 
 /*
  *  Rotas de Tags
 */
  router.post("/tags", ensureAuth, ensureAdmin, createTagController.handle);
  router.get("/tags/list", ensureAuth, listTagController.handle);
-
+/**
+ * metodo get:id
+ * metodo delete
+ * metodo put
+ */
 
 /*
  *  Rotas de Compliments
@@ -48,6 +58,11 @@ router.get("/users/list", ensureAuth, listUserController.handle);
  router.post("/compliments", ensureAuth, createComplimentController.handle);
  router.get("/users/compliments/send", ensureAuth,listUserSendComplimentsController.handle);
  router.get("/users/compliments/receive", ensureAuth,listUserReceiveComplimentsController.handle);
+ /**
+  * metodo view user receive compliments
+  * metodo delete send compliments
+  * 
+  */
 
  
 /*

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListTagsService } from "../service/ListTagService";
+import { ListTagsService } from "../../service/tags/ListTagService";
 
 
 class ListTagsController{

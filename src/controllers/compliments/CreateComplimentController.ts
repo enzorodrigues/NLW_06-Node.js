@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateComplimentsService } from "../service/CreateComplimentsService";
+import { CreateComplimentsService } from "../../service/compliments/CreateComplimentsService";
 
 
 

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListUserSenderComplimentsService } from "../service/ListUserSendComplimentsService";
+import { ListUserSenderComplimentsService } from "../../service/compliments/ListUserSendComplimentsService";
 
 
 

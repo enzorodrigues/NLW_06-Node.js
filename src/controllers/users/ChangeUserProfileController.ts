@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ChangeUserProfileService } from "../service/ChangeUserProfileService";
+import { ChangeUserProfileService } from "../../service/users/ChangeUserProfileService";
 
 class ChangeUserProfileController{
     async handle(request: Request, response: Response){

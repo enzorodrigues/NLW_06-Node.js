@@ -14,14 +14,14 @@ class Compliment{
     user_sender: string;
 
     @JoinColumn({name: "user_sender"})
-    @ManyToOne(()=> User)
+    @ManyToOne(()=> User, {onDelete: 'CASCADE'})
     userSender: User;
 
     @Column()
     user_receiver: string;
 
     @JoinColumn({name: "user_receiver"})
-    @ManyToOne(()=> User)
+    @ManyToOne(()=> User, {onDelete: 'CASCADE'})
     userReceiver: User;
 
     @Column()

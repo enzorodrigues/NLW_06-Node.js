@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ChangeUserPassword } from "../service/ChangeUserPasswordService";
+import { ChangeUserPassword } from "../../service/users/ChangeUserPasswordService";
 
 
 

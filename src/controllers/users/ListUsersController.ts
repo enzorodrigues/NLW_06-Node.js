@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListUsersService } from "../service/ListUsersService";
+import { ListUsersService } from "../../service/users/ListUsersService";
 
 
 
