@@ -19,7 +19,10 @@
     - Apenas por usuário autenticados.
 - Vizualização de Elogios(Enviados e Recebidos)
     - O usuário deve estar autenticado na aplicação;
-    - Apenas elogios relacionados ao usuário autenticados.
+    - Enviados
+        - Apenas usuario remetente.
+    - Recebidos
+        - Usuarios autenticados.
 - Autenticação
     - Apenas usuários cadastrados no sistema.
 

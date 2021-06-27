@@ -16,26 +16,35 @@ import { ListUsersByIdController } from "./controllers/users/ListUserByIdControl
 import { ListTagIdController } from "./controllers/tags/ListTagIdController";
 import { DeleteTagController } from "./controllers/tags/DeleteTagController";
 import { UpdateTagController } from "./controllers/tags/UpdateTagController";
+import { ComplimentsReceiveController } from "./controllers/compliments/ComplimentsReceiveController";
+import { DeleteComplimentSentController } from "./controllers/compliments/DeleteComplimentSentController";
 
 
 const router = Router();
 
-/*  Importação de controllers   */ 
+/* 
+ * Importação de controllers   
+*/ 
+//  Users Controllers
 const createUserController = new CreateUserController();
-const createTagController = new CreateTagController();
 const authUserController = new AuthUserController();
-const createComplimentController = new CreateComplimentController();
-const listUserSendComplimentsController = new ListUserSenderComplimentsController();
-const listUserReceiveComplimentsController = new ListUserReceiverComplimentsController();
-const listTagController = new ListTagsController();
 const listUserController = new ListUsersController();
 const changepassword = new ChangeUserPasswordController();
 const changeProfile = new ChangeUserProfileController();
 const deleteUserController = new DeleteUserController();
 const listUserByIdController = new ListUsersByIdController();
+// Tags Controllers
+const createTagController = new CreateTagController();
+const listTagController = new ListTagsController();
 const listTagIdController = new ListTagIdController();
 const deleteTagController = new DeleteTagController();
 const updateTagController = new UpdateTagController();
+// Compliments Controllers
+const createComplimentController = new CreateComplimentController();
+const listUserSendComplimentsController = new ListUserSenderComplimentsController();
+const listUserReceiveComplimentsController = new ListUserReceiverComplimentsController();
+const complimentsReceiveController = new ComplimentsReceiveController();
+const deleteComplimentController = new DeleteComplimentSentController();
 
 
 /*
@@ -48,7 +57,6 @@ router.get("/users/list", ensureAuth, listUserController.handle);
 router.delete("/users/delete", ensureAuth, deleteUserController.handle);
 router.get("/users/list/:id", ensureAuth, listUserByIdController.handle);
 
-
 /*
  *  Rotas de Tags
 */
@@ -57,10 +65,6 @@ router.get("/tags/list", ensureAuth, listTagController.handle);
 router.get("/tags/list/:tag_id", ensureAuth, listTagIdController.handle);
 router.delete("/tags/delete/:tag_id", ensureAuth, ensureAdmin, deleteTagController.handle);
 router.put("/tags/update", ensureAuth, ensureAdmin, updateTagController.handle);
-/**
- * metodo put
- */
-
 
 /*
  *  Rotas de Compliments
@@ -68,12 +72,8 @@ router.put("/tags/update", ensureAuth, ensureAdmin, updateTagController.handle);
 router.post("/compliments", ensureAuth, createComplimentController.handle);
 router.get("/users/compliments/send", ensureAuth, listUserSendComplimentsController.handle);
 router.get("/users/compliments/receive", ensureAuth, listUserReceiveComplimentsController.handle);
- /**
-  * metodo view user receive compliments
-  * metodo delete send compliments
-  * 
-  */
-
+router.get("/users/compliments/:id", ensureAuth, complimentsReceiveController.handle);
+router.delete("/users/compliments/delete", ensureAuth, deleteComplimentController.handle);
  
 /*
  * Rota de Middrewares
